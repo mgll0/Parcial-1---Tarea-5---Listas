@@ -7,7 +7,8 @@ import uaslp.objetos.list2.src.List;
 
 public class MainArray {
     public static void main(String []args){
-        ArrayList list = new ArrayList();
+        ArrayList list = new ArrayList<>();
+
         list.addAtTail(123);
         list.printList();
         list.addAtFront("Holas");

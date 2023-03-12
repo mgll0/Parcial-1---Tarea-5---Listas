@@ -1,28 +1,22 @@
 package uaslp.objetos.list2.src.LinkedList;
 
 import uaslp.objetos.list2.src.Iterator;
-import uaslp.objetos.list2.src.LinkedList.Node;
-import uaslp.objetos.list2.src.List;
 
-public class LinkedListIterator implements Iterator{
-    private Node currentNode;
+public class LinkedListIterator<T> implements Iterator<T>{
+    private Node<T> currentNode;
     private int currentIndex;
-    LinkedListIterator(Node head){
+    LinkedListIterator(Node<T> head){
         currentNode = head;
         currentIndex = 0;
     }
-
-    //public K getIterator() {
-        //return this;
-    //}
 
     public boolean hasNext(){
         return currentNode != null;
     }
 
 
-    public Object next(){
-        Object data = currentNode.data;
+    public T next(){
+        T data = currentNode.data;
         currentNode = currentNode.next;
         currentIndex++;
         return data;
@@ -31,7 +25,7 @@ public class LinkedListIterator implements Iterator{
         return currentIndex;
     }
 
-    public Node getCurrentNode(){
+    public Node<T> getCurrentNode(){
         return currentNode;
     }
 }

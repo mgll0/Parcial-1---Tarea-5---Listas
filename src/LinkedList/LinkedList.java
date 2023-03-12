@@ -2,16 +2,16 @@ package uaslp.objetos.list2.src.LinkedList;
 import uaslp.objetos.list2.src.List;
 import uaslp.objetos.list2.src.Iterator;
 
-public class LinkedList implements List {       //Lista con nodos
-    private Node head;
-    private Node tail;
+public class LinkedList <T> implements List <T> {       //Lista con nodos
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
 
     //Encapsulacion -> Capacidad que tienen las clases para hacer visible u ocultar los atributos
     //y los metodos para dar niveles de visibilidad
 
-    public void addAtTail(Object newData){
-        Node node = new Node();
+    public void addAtTail(T newData){
+        Node<T> node = new Node<>();
         node.data = newData;
         node.previous = tail;
         tail.next = node;
@@ -24,8 +24,8 @@ public class LinkedList implements List {       //Lista con nodos
         size++;
         System.out.println("Se añadio un nodo al final");
     }
-    public void addAtFront(Object newData){
-        Node node = new Node();
+    public void addAtFront(T newData){
+        Node<T> node = new Node<>();
         node.data = newData;
 
         if (head == null){
@@ -44,12 +44,12 @@ public class LinkedList implements List {       //Lista con nodos
         if (index < 0 || index >= size-1){        //No esta dentro de los limtites
             return;
         }
-        LinkedListIterator it = (LinkedListIterator) getIterator();
+        LinkedListIterator<T> it = (LinkedListIterator<T>) getIterator();
 
         while (it.hasNext() && it.getCurrentIndex() != index){
             it.next();
         }
-        Node nodeToErase = it.getCurrentNode();
+        Node<T> nodeToErase = it.getCurrentNode();
         deleteNode(nodeToErase);
     }
 
@@ -59,7 +59,7 @@ public class LinkedList implements List {       //Lista con nodos
         System.out.println("La lista fue eliminada");
     }
 
-    public void setAt(int index, Object data){
+    public void setAt(int index, T data){
         System.out.println("Se inserta en la pos " + index + " de " + size);
         if (index < 0 || index > size){        //No esta dentro de los limtites
             return;
@@ -71,13 +71,13 @@ public class LinkedList implements List {       //Lista con nodos
             addAtTail(data);
         }
 
-        LinkedListIterator it = (LinkedListIterator) getIterator();
+        LinkedListIterator<T> it = (LinkedListIterator<T>) getIterator();
         while (it.hasNext() && it.getCurrentIndex() != index){
             it.next();
         }
-        Node itNode = it.getCurrentNode();
+        Node<T> itNode = it.getCurrentNode();
 
-        Node node = new Node();
+        Node<T> node = new Node<>();
         node.data = data;
 
         node.next = itNode;
@@ -85,13 +85,12 @@ public class LinkedList implements List {       //Lista con nodos
         itNode.previous = node;
 
     }
-    private void deleteNode(Node nodeToErase){
+    private void deleteNode(Node<T> nodeToErase){
         if (nodeToErase.previous == null && nodeToErase.next == null){
             removeAll();
         } else
         if (nodeToErase.next == null){
             tail = nodeToErase.previous;
-            nodeToErase.next = null;
         } else
         if (nodeToErase.previous == null){
             head = nodeToErase.next;
@@ -104,11 +103,11 @@ public class LinkedList implements List {       //Lista con nodos
         size--;
     }
 
-    public Object getAt(int index){
+    public T getAt(int index){
         if (index < 0 || index >= size){
             return null;
         }
-        LinkedListIterator it = (LinkedListIterator) getIterator();
+        LinkedListIterator<T> it = (LinkedListIterator<T>) getIterator();
 
         while (it.hasNext() && it.getCurrentIndex() != index){
             it.next();
@@ -117,10 +116,10 @@ public class LinkedList implements List {       //Lista con nodos
         return it.getCurrentNode().data;
     }
 
-    public void removeAllWithValue(Object data){
+    public void removeAllWithValue(T data){
         System.out.println("Eliminando todos con: " + data);
 
-        LinkedListIterator it = (LinkedListIterator) getIterator();
+        LinkedListIterator<T> it = (LinkedListIterator<T>) getIterator();
         while (it.hasNext()){
             if (it.getCurrentNode().data == data){
                 deleteNode(it.getCurrentNode());
@@ -137,8 +136,8 @@ public class LinkedList implements List {       //Lista con nodos
         return size;
     }
 
-    public Iterator getIterator(){
-        return new LinkedListIterator(head);
+    public Iterator<T> getIterator(){
+        return new LinkedListIterator<>(head);
     }
 
     public boolean isEmpty(){

@@ -2,18 +2,18 @@ package uaslp.objetos.list2.src.ArrayList;
 
 import uaslp.objetos.list2.src.List;
 
-public class ArrayList implements List{    //Es una lista en un arreglo
+public class ArrayList <T> implements List <T>{    //Es una lista en un arreglo
     private static final int INITIAL_SIZE = 2;
-    public Object []array;      //arreglo de strings
+    public T []array;      //arreglo de strings
     private int size;   //cuantos datos se le han insertado al arreglo
 
-
+    @SuppressWarnings("unchecked")
     public ArrayList(){
-        array = new Object[INITIAL_SIZE];
         size = 0;
+        array = (T[])( new Object [INITIAL_SIZE]);
     }
 
-    public void addAtTail(Object data){
+    public void addAtTail(T data){
         if (size == array.length){
             increseSize();
         }
@@ -22,12 +22,12 @@ public class ArrayList implements List{    //Es una lista en un arreglo
         size++;
     }
 
-    public void addAtFront(Object data){
+    public void addAtFront(T data){
         if (size == array.length){
             increseSize();
         }
         int i = size;
-        ArrayListIterator it = (ArrayListIterator) getIterator();
+        ArrayListIterator<T> it = getIterator();
         it.setIndexAt(size);
         while (it.hasPrevious()){
             array[i] = it.previous();
@@ -49,12 +49,13 @@ public class ArrayList implements List{    //Es una lista en un arreglo
         size--;
     }
 
+    @SuppressWarnings("unchecked")
     public void removeAll(){
-        array = new Object[INITIAL_SIZE];
+        array = (T[])(new Object[INITIAL_SIZE]);
         size = 0;
     }
 
-    public void setAt(int index, Object data){
+    public void setAt(int index, T data){
         if (index > size){
             return;
         }
@@ -69,7 +70,7 @@ public class ArrayList implements List{    //Es una lista en un arreglo
         size++;
     }
 
-    public Object getAt(int index){
+    public T getAt(int index){
         if (index < 0 || index >= size){        //No esta dentro de los limtites
             return null;
         }
@@ -87,13 +88,12 @@ public class ArrayList implements List{    //Es una lista en un arreglo
         return size;
     }
 
+    @SuppressWarnings("unchecked")
     private void increseSize(){
-        Object []newArray = new Object[array.length * 2];
+        Object []newArray = (new Object[array.length * 2]);
         //System.arraycopy(array, 0, newArray, 0, array.length); forma eficiente de copiar arreglos
-        for (int i = 0; i < array.length; i++){
-            newArray[i] = array[i];
-        }
-        array = newArray;
+        System.arraycopy(array, 0, newArray, 0, array.length);
+        array = (T[]) newArray;
     }
 
     public void printList(){
@@ -107,7 +107,7 @@ public class ArrayList implements List{    //Es una lista en un arreglo
         return size == 0;
     }
 
-    public ArrayListIterator getIterator() {
-        return new ArrayListIterator(this);
+    public ArrayListIterator<T> getIterator() {
+        return new ArrayListIterator<>(this);
     }
 }

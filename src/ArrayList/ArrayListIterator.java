@@ -1,13 +1,12 @@
 package uaslp.objetos.list2.src.ArrayList;
 
 import uaslp.objetos.list2.src.Iterator;
-import uaslp.objetos.list2.src.List;
-public class ArrayListIterator implements Iterator {
-    private Object currentObject;
+public class ArrayListIterator <T> implements Iterator <T>{
+    private T currentObject;
     private int currentIndex;
-    private final ArrayList list;
+    private final ArrayList<T> list;
 
-    ArrayListIterator(ArrayList list){
+    ArrayListIterator(ArrayList<T> list){
         this.list = list;
         currentIndex = 0;
     }
@@ -21,13 +20,13 @@ public class ArrayListIterator implements Iterator {
     public boolean hasPrevious(){
         return currentIndex > 0;
     }
-    public Object next(){
+    public T next(){
         currentIndex++;
-        return list.array[currentIndex];
+        return (T) list.array[currentIndex];
     }
-    public Object previous(){
+    public T previous(){
         currentIndex--;
-        return list.array[currentIndex];
+        return (T) list.array[currentIndex];
 
     }
 
