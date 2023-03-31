@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1c7238a-d9af-4c2e-8279-b0c411b55bd3" name="Changes" comment="Lista v3 con uso de excepciones">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +95,8 @@
       <workItem from="1680225509611" duration="5405000" />
       <workItem from="1680230968618" duration="113000" />
       <workItem from="1680231127089" duration="10000" />
-      <workItem from="1680231205841" duration="680000" />
+      <workItem from="1680231205841" duration="1443000" />
+      <workItem from="1680282171987" duration="915000" />
     </task>
     <task id="LOCAL-00001" summary="Lista v3 con uso de excepciones">
       <created>1680231841690</created>
